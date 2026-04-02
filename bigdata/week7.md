@@ -1,4 +1,4 @@
-```markdown
+
 # 📘 Complete Guide: Multivariate Probability & Statistical Inference
 
 ---
@@ -12,9 +12,9 @@
 ### Explanation
 For a random vector **X** = (X₁, X₂, ..., Xₙ) in n-dimensional space, the **joint CDF** gives the probability that each component falls at or below specified values simultaneously:
 
-```
+
 F(x₁, x₂, ..., xₙ) = P(X₁ ≤ x₁, X₂ ≤ x₂, ..., Xₙ ≤ xₙ)
-```
+
 
 **Four Essential Properties:**
 
@@ -27,9 +27,9 @@ F(x₁, x₂, ..., xₙ) = P(X₁ ≤ x₁, X₂ ≤ x₂, ..., Xₙ ≤ xₙ)
    - If all xᵢ → +∞, then F → 1
 
 4. **Non-negative Increment:** For any hyper-rectangle [a₁,b₁] × ... × [aₙ,bₙ], the probability is non-negative:
-   ```
+   
    P(a₁ < X₁ ≤ b₁, ..., aₙ < Xₙ ≤ bₙ) ≥ 0
-   ```
+   
 
 ### Detailed Example: Die and Coin Experiment
 
@@ -38,27 +38,27 @@ F(x₁, x₂, ..., xₙ) = P(X₁ ≤ x₁, X₂ ≤ x₂, ..., Xₙ ≤ xₙ)
 **Sample Space:** 12 equally likely outcomes, each with probability 1/12.
 
 **Computing F(3.5, 0.5):**
-```
+
 F(3.5, 0.5) = P(X ≤ 3.5, Y ≤ 0.5)
             = P(X ∈ {1,2,3}, Y = 0)
             = P({(1,0), (2,0), (3,0)})
             = 3/12 = 1/4 = 0.25
-```
+
 
 **Piecewise CDF Structure:**
-```
+
 F(x,y) = 0                          if x < 1 or y < 0
        = (1/12)⌊x⌋                 if 0 ≤ y < 1 and 1 ≤ x < 7
        = (1/6)⌊x⌋                  if y ≥ 1 and 1 ≤ x < 7
        = 1                          if x ≥ 6 and y ≥ 1
-```
+
 
 **Verification at boundary points:**
 - F(6, 1) = P(X ≤ 6, Y ≤ 1) = P(entire sample space) = 1 ✓
 - F(0.5, 0) = P(X ≤ 0.5) = 0 (impossible die roll) ✓
 
 **Visualization in 2D:**
-```
+
 Y (Coin)
 1 |████████████████████████████████  F = 6/6 = 1
   |████████████████████████████████  
@@ -66,7 +66,7 @@ Y (Coin)
   |            1  2  3  4  5  6
   +----------------------------→ X (Die)
     At Y=0, F increases in steps of 1/6 as X passes 1,2,3,4,5,6
-```
+
 
 ---
 
@@ -75,9 +75,9 @@ Y (Coin)
 ### Explanation
 A random vector **X** = (X₁, ..., Xₙ) is **discrete** if it takes values from a countable set (finite or countably infinite). The **Joint Probability Mass Function (PMF)** assigns positive probability to each "jump point":
 
-```
+
 p_{i₁i₂...iₙ} = P(X₁ = x₁ᵢ₁, X₂ = x₂ᵢ₂, ..., Xₙ = xₙᵢₙ)
-```
+
 
 **Requirements:**
 - p_{i₁...iₙ} ≥ 0 for all combinations
@@ -121,9 +121,9 @@ p_{i₁i₂...iₙ} = P(X₁ = x₁ᵢ₁, X₂ = x₂ᵢ₂, ..., Xₙ = xₙ�
 ### Explanation
 A random vector **X** = (X₁, ..., Xₙ) is **continuous** if there exists a non-negative **Joint Probability Density Function (PDF)** f(x₁, ..., xₙ) such that:
 
-```
+
 F(x₁, ..., xₙ) = ∫_{-∞}^{x₁} ... ∫_{-∞}^{xₙ} f(u₁, ..., uₙ) duₙ...du₁
-```
+
 
 **Properties:**
 - f(x₁, ..., xₙ) ≥ 0 everywhere
@@ -133,14 +133,14 @@ F(x₁, ..., xₙ) = ∫_{-∞}^{x₁} ... ∫_{-∞}^{xₙ} f(u₁, ..., uₙ) 
 ### Detailed Example: Triangular Region PDF
 
 **Specification:**
-```
+
 f(x, y) = 2   for 0 < x < y < 1
         = 0   elsewhere
-```
+
 
 **Geometric Interpretation:** The support is the upper-triangle of the unit square where y > x.
 
-```
+
 Y
 1 |      /|
   |     / |  Region: 0 < x < y < 1
@@ -150,20 +150,20 @@ Y
   | /     |
   |/______|
   0        1    X
-```
+
 
 **Verification of Normalization:**
-```
+
 ∫∫ f(x,y) dx dy = ∫₀¹ ∫₀ʸ 2 dx dy
                 = ∫₀¹ [2x]₀ʸ dy
                 = ∫₀¹ 2y dy
                 = [y²]₀¹
                 = 1  ✓
-```
+
 
 **Probability Calculation:** Find P(X < 0.3, Y > 0.5)
 
-```
+
 Region: 0 < x < 0.3 and 0.5 < y < 1, with constraint x < y
 
 Since x < 0.3 and y > 0.5, the constraint x < y is automatically satisfied.
@@ -172,7 +172,7 @@ P = ∫_{0.5}^{1} ∫_{0}^{0.3} 2 dx dy
   = ∫_{0.5}^{1} 0.6 dy
   = 0.6 × 0.5
   = 0.3
-```
+
 
 ---
 
@@ -182,54 +182,54 @@ P = ∫_{0.5}^{1} ∫_{0}^{0.3} 2 dx dy
 The **marginal distribution** describes the probability distribution of a subset of variables, ignoring the others. Obtained by "summing out" (discrete) or "integrating out" (continuous) the remaining variables.
 
 **Discrete:**
-```
+
 P(Xₖ = xₖ) = Σ_{all other indices} p(i₁, ..., iₖ, ..., iₙ)
-```
+
 
 **Continuous:**
-```
+
 fₖ(xₖ) = ∫_{-∞}^{∞} ... ∫_{-∞}^{∞} f(x₁, ..., xₙ) dx₁...dxₖ₋₁ dxₖ₊₁...dxₙ
-```
+
 
 ### Detailed Example 1: Discrete (Coin Toss)
 
 **Marginal of X (sum over Y):**
-```
+
 P(X=0) = p(0,1) + p(0,3) = 0 + 1/8 = 1/8
 P(X=1) = p(1,1) + p(1,3) = 3/8 + 0 = 3/8
 P(X=2) = 3/8 + 0 = 3/8
 P(X=3) = 0 + 1/8 = 1/8
-```
+
 
 **Marginal of Y (sum over X):**
-```
+
 P(Y=1) = 0 + 3/8 + 3/8 + 0 = 3/4
 P(Y=3) = 1/8 + 0 + 0 + 1/8 = 1/4
-```
+
 
 ### Detailed Example 2: Continuous (Triangular PDF)
 
 **Marginal PDF of X:**
-```
+
 f₁(x) = ∫_{x}^{1} 2 dy = 2(1-x)   for 0 < x < 1
       = 0                         elsewhere
-```
+
 
 **Check:**
-```
+
 ∫₀¹ 2(1-x) dx = [2x - x²]₀¹ = 2 - 1 = 1 ✓
-```
+
 
 **Marginal PDF of Y:**
-```
+
 f₂(y) = ∫_{0}^{y} 2 dx = 2y   for 0 < y < 1
       = 0                     elsewhere
-```
+
 
 **Check:**
-```
+
 ∫₀¹ 2y dy = [y²]₀¹ = 1 ✓
-```
+
 
 **Shape Interpretation:**
 - f₁(x) = 2(1-x): Linear decrease from 2 (at x=0) to 0 (at x=1) — X tends to be small
@@ -244,20 +244,20 @@ f₂(y) = ∫_{0}^{y} 2 dx = 2y   for 0 < y < 1
 The **conditional distribution** describes the behavior of some variables given that other variables take specific values.
 
 **Conditional PMF (Discrete):**
-```
+
 P(X = x | Y = y) = P(X = x, Y = y) / P(Y = y)   if P(Y=y) > 0
-```
+
 
 **Conditional PDF (Continuous):**
-```
+
 f_{X|Y}(x|y) = f(x,y) / f_Y(y)   if f_Y(y) > 0
-```
+
 
 **Conditional Expectation:**
-```
+
 E[X | Y = y] = ∫ x · f_{X|Y}(x|y) dx   (continuous)
              = Σ x · P(X=x | Y=y)     (discrete)
-```
+
 
 **Key Properties:**
 1. **Law of Total Expectation:** E[E[X|Y]] = E[X]
@@ -271,23 +271,23 @@ E[X | Y = y] = ∫ x · f_{X|Y}(x|y) dx   (continuous)
 
 **Given Y=1 (first is Head):**
 Possible outcomes: HT (X=1), HH (X=2)
-```
+
 E[X|Y=1] = (1 + 2)/2 = 1.5
-```
+
 
 **Given Y=0 (first is Tail):**
 Possible outcomes: TT (X=0), TH (X=1)
-```
+
 E[X|Y=0] = (0 + 1)/2 = 0.5
-```
+
 
 **Law of Total Expectation Verification:**
-```
+
 E[X] = E[X|Y=1]·P(Y=1) + E[X|Y=0]·P(Y=0)
      = 1.5 × 0.5 + 0.5 × 0.5
      = 0.75 + 0.25
      = 1.0  ✓
-```
+
 (Actual E[X] for 2 fair coins = 1)
 
 ### Detailed Example 2: Continuous (Triangular Region)
@@ -297,28 +297,28 @@ E[X] = E[X|Y=1]·P(Y=1) + E[X|Y=0]·P(Y=0)
 **Step 1:** Find marginal f_Y(y) = 2y (from Concept 4)
 
 **Step 2:** Find conditional PDF
-```
+
 f_{X|Y}(x|y) = f(x,y) / f_Y(y) = 2 / (2y) = 1/y   for 0 < x < y
-```
+
 
 **Interpretation:** Given Y=y, X is **Uniform(0, y)**!
 
 **Conditional Expectation:**
-```
+
 E[X|Y=y] = ∫₀ʸ x · (1/y) dx 
          = (1/y) · [x²/2]₀ʸ
          = (1/y) · (y²/2)
          = y/2
-```
+
 
 **As a random variable:** E[X|Y] = Y/2
 
 **Law of Total Expectation:**
-```
+
 E[X] = E[Y/2] = (1/2)E[Y]
 E[Y] = ∫₀¹ y · 2y dy = 2/3
 Therefore: E[X] = (1/2)(2/3) = 1/3  ✓
-```
+
 
 **Verification via marginal:** E[X] = ∫₀¹ x · 2(1-x) dx = 2[1/2 - 1/3] = 1/3 ✓
 
@@ -334,14 +334,14 @@ Therefore: E[X] = (1/2)(2/3) = 1/3  ✓
 The **bivariate normal** distribution models two jointly normal random variables with linear dependence. It is the foundation of multivariate statistical analysis.
 
 **PDF:**
-```
+
 f(x,y) = 1/(2πσ_X σ_Y √(1−ρ²)) · exp{−Q(x,y)/[2(1−ρ²)]}
-```
+
 
 where the **quadratic form** is:
-```
+
 Q(x,y) = [(x−μ_X)/σ_X]² − 2ρ[(x−μ_X)/σ_X][(y−μ_Y)/σ_Y] + [(y−μ_Y)/σ_Y]²
-```
+
 
 **Five Parameters:**
 | Parameter | Symbol | Meaning |
@@ -353,10 +353,10 @@ Q(x,y) = [(x−μ_X)/σ_X]² − 2ρ[(x−μ_X)/σ_X][(y−μ_Y)/σ_Y] + [(y−�
 | Correlation | ρ | Linear dependence (−1 ≤ ρ ≤ 1) |
 
 **Covariance Matrix:**
-```
+
 Σ = [ σ_X²      ρσ_Xσ_Y  ]
     [ ρσ_Xσ_Y   σ_Y²     ]
-```
+
 
 **Key Properties:**
 1. **Marginals are normal:** X ~ N(μ_X, σ_X²), Y ~ N(μ_Y, σ_Y²)
@@ -374,13 +374,13 @@ Q(x,y) = [(x−μ_X)/σ_X]² − 2ρ[(x−μ_X)/σ_X][(y−μ_Y)/σ_Y] + [(y−�
 
 **Prediction:** Person weighs Y = 85 kg (1 std dev above mean). Predict height:
 
-```
+
 E[X|Y=85] = μ_X + ρ(σ_X/σ_Y)(Y−μ_Y)
           = 170 + 0.7×(10/15)×(85−70)
           = 170 + 0.7×0.667×15
           = 170 + 7
           = 177 cm
-```
+
 
 **Uncertainty reduction:**
 - Marginal variance: σ_X² = 100
@@ -415,7 +415,7 @@ For a fixed value c, the set {(x,y): f(x,y) = c} forms an **ellipse** centered a
 ### Detailed Example: Visual Comparison
 
 **Case 1: ρ = 0.8, σ_X = σ_Y**
-```
+
     Y
     |    ╱──╲
     |   ╱    ╲   Major axis: y = x (45° line)
@@ -423,10 +423,10 @@ For a fixed value c, the set {(x,y): f(x,y) = c} forms an **ellipse** centered a
     | ╱        ╲
     |╱__________╲
     +----------→ X
-```
+
 
 **Case 2: ρ = −0.8, σ_X = σ_Y**
-```
+
     Y
     |╲          ╱
     | ╲        ╱   Major axis: y = −x (−45° line)
@@ -434,10 +434,10 @@ For a fixed value c, the set {(x,y): f(x,y) = c} forms an **ellipse** centered a
     |   ╲    ╱
     |    ╲──╱
     +----------→ X
-```
+
 
 **Case 3: ρ = 0, σ_X = 2σ_Y (stretched horizontally)**
-```
+
     Y
     |   ◯◯◯◯◯
     |  ◯     ◯   Wider in X direction
@@ -445,7 +445,7 @@ For a fixed value c, the set {(x,y): f(x,y) = c} forms an **ellipse** centered a
     |  ◯     ◯
     |   ◯◯◯◯◯
     +----------→ X
-```
+
 
 ---
 
@@ -455,9 +455,9 @@ For a fixed value c, the set {(x,y): f(x,y) = c} forms an **ellipse** centered a
 Generalizes bivariate normal to p dimensions. A random vector **X** = (X₁, ..., Xₚ)ᵀ follows **Nₚ(μ, Σ)** if every linear combination aᵀX follows a univariate normal distribution.
 
 **PDF (when Σ is positive definite):**
-```
+
 f(x) = (2π)^(−p/2) |Σ|^(−1/2) exp{−½(x−μ)ᵀΣ⁻¹(x−μ)}
-```
+
 
 **Parameters:**
 - **μ:** p×1 mean vector
@@ -469,9 +469,9 @@ f(x) = (2π)^(−p/2) |Σ|^(−1/2) exp{−½(x−μ)ᵀΣ⁻¹(x−μ)}
 ### Detailed Example: 4-Variate Normal with Independence
 
 **Given PDF:**
-```
+
 f(x) = (1/48π²) exp{−½[(x₁−2)²/6 + (x₂+1)²/3 + x₃²/4 + (x₄−4)²/2]}
-```
+
 
 **Identification:**
 - No cross-terms (xᵢxⱼ) → independent components
@@ -479,11 +479,11 @@ f(x) = (1/48π²) exp{−½[(x₁−2)²/6 + (x₂+1)²/3 + x₃²/4 + (x₄−4
 - Mean vector: μ = (2, −1, 0, 4)ᵀ
 
 **Verification of constant:**
-```
+
 (2π)^(4/2) = (2π)² = 4π²
 |Σ|^(1/2) = √(6×3×4×2) = √144 = 12
 Constant = 1/(4π² × 12) = 1/(48π²)  ✓
-```
+
 
 **Independent Components:**
 - X₁ ~ N(2, 6)
@@ -498,48 +498,48 @@ Constant = 1/(4π² × 12) = 1/(48π²)  ✓
 ### Explanation
 
 **Property 1: Linear Combinations**
-```
+
 If X ~ Nₚ(μ, Σ), then AX ~ N_q(Aμ, AΣAᵀ)
-```
+
 for any q×p matrix A. Any linear combination of components is univariate normal.
 
 **Property 2: Marginal Normality**
 Any subset of components is multivariate normal. Partition X = [X₁, X₂]ᵀ, then:
-```
+
 X₁ ~ N_q(μ₁, Σ₁₁)
-```
+
 
 **Property 3: Zero Covariance ⇔ Independence**
 Subsets X₁ and X₂ are independent if and only if Σ₁₂ = 0 (off-diagonal block is zero matrix). This is **unique** to the multivariate normal family!
 
 **Property 4: Conditional Distributions**
 The conditional distribution of X₁ given X₂ = x₂ is:
-```
+
 X₁|X₂=x₂ ~ N_q(μ₁ + Σ₁₂Σ₂₂⁻¹(x₂−μ₂), Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁)
-```
+
 
 **Property 5: Quadratic Form**
-```
+
 (X−μ)ᵀΣ⁻¹(X−μ) ~ χ²ₚ
-```
+
 (Chi-squared with p degrees of freedom). Defines confidence ellipsoids.
 
 ### Detailed Example: Independence Check
 
 **Given:** X = (X₁, X₂, X₃)ᵀ ~ N₃(μ, Σ) with:
-```
+
 Σ = [ 4  1  0 ]
     [ 1  3  0 ]
     [ 0  0  2 ]
-```
+
 
 **Partition:** X₁ = (X₁, X₂)ᵀ, X₂ = X₃
 
 **Check Σ₁₂:**
-```
+
 Σ₁₂ = [ 0 ]
       [ 0 ]  (2×1 zero vector)
-```
+
 
 **Conclusion:** Since Σ₁₂ = 0, (X₁, X₂) and X₃ are **independent**.
 
@@ -562,25 +562,25 @@ Let X ~ N(0,1), W ~ Bernoulli(0.5), Y = (2W−1)X. Both X and Y are marginally N
 For multivariate data X₁, ..., Xₙ (each a p×1 vector), the sample statistics estimate population parameters.
 
 **Sample Mean Vector:**
-```
+
 X̄ = (1/n) Σᵢ₌₁ⁿ Xᵢ = (1/n) Xᵀ**1**
-```
+
 where X is n×p data matrix, **1** is n×1 vector of ones.
 
 **Centered Data:**
-```
+
 X̃ = X − **1**X̄ᵀ
-```
+
 
 **Sample Covariance Matrix:**
-```
+
 S = (1/(n−1)) X̃ᵀX̃ = (1/(n−1)) Σᵢ₌₁ⁿ (Xᵢ − X̄)(Xᵢ − X̄)ᵀ
-```
+
 
 **Entry (j,k):**
-```
+
 sⱼₖ = (1/(n−1)) Σᵢ₌₁ⁿ (xᵢⱼ − X̄ⱼ)(xᵢₖ − X̄ₖ)
-```
+
 
 **Properties:**
 - E[X̄] = μ (unbiased)
@@ -599,29 +599,29 @@ sⱼₖ = (1/(n−1)) Σᵢ₌₁ⁿ (xᵢⱼ − X̄ⱼ)(xᵢₖ − X̄ₖ)
 | 4 | 180 | 75 |
 
 **Sample Mean:**
-```
+
 X̄₁ = (160+170+165+180)/4 = 168.75
 X̄₂ = (55+65+60+75)/4 = 63.75
 X̄ = [168.75, 63.75]ᵀ
-```
+
 
 **Centered Data:**
-```
+
 [ −8.75  −8.75 ]
 [  1.25   1.25 ]
 [ −3.75  −3.75 ]
 [ 11.25  11.25 ]
-```
+
 
 **Sample Covariance:**
-```
+
 s₁₁ = (76.56 + 1.56 + 14.06 + 126.56)/3 = 218.75/3 = 72.92
 s₂₂ = (76.56 + 1.56 + 14.06 + 126.56)/3 = 72.92
 s₁₂ = (76.56 + 1.56 + 14.06 + 126.56)/3 = 72.92
 
 S = [ 72.92  72.92 ]
     [ 72.92  72.92 ]
-```
+
 
 **Interpretation:** Perfect sample correlation (ρ̂ = 1) because weight = height − 105 in this constructed example.
 
@@ -641,9 +641,9 @@ When X₁, ..., Xₙ are i.i.d. Nₚ(μ, Σ):
 The distribution of Σᵢ₌₁ⁿ ZᵢZᵢᵀ where Zᵢ ~ Nₚ(0, Σ) i.i.d. When p=1, this reduces to σ²χ²ₙ₋₁.
 
 **Quadratic Form:**
-```
+
 n(X̄ − μ)ᵀΣ⁻¹(X̄ − μ) ~ χ²ₚ
-```
+
 
 **Confidence Ellipsoid:**
 The set {μ : n(X̄ − μ)ᵀS⁻¹(X̄ − μ) ≤ χ²ₚ,₁₋α} contains the true mean with probability 1−α.
@@ -656,14 +656,14 @@ The set {μ : n(X̄ − μ)ᵀS⁻¹(X̄ − μ) ≤ χ²ₚ,₁₋α} contains 
 For X₁, ..., Xₙ ~ Nₚ(μ, Σ) i.i.d., find parameters maximizing likelihood.
 
 **Log-Likelihood:**
-```
+
 ln L(μ, Σ) = −(np/2)ln(2π) − (n/2)ln|Σ| − ½Σᵢ₌₁ⁿ(Xᵢ−μ)ᵀΣ⁻¹(Xᵢ−μ)
-```
+
 
 **Using trace trick:**
-```
+
 Σ(Xᵢ−μ)ᵀΣ⁻¹(Xᵢ−μ) = tr[Σ⁻¹Σ(Xᵢ−X̄)(Xᵢ−X̄)ᵀ] + n(X̄−μ)ᵀΣ⁻¹(X̄−μ)
-```
+
 
 **MLE Solutions:**
 - **μ̂ = X̄** (sample mean)
@@ -681,24 +681,24 @@ ln L(μ, Σ) = −(np/2)ln(2π) − (n/2)ln|Σ| − ½Σᵢ₌₁ⁿ(Xᵢ−μ)�
 
 ### Explanation
 The multivariate generalization of the one-sample t-test for testing:
-```
+
 H₀: μ = μ₀ vs H₁: μ ≠ μ₀
-```
+
 
 **Test Statistic:**
-```
+
 T² = n(X̄ − μ₀)ᵀ S⁻¹ (X̄ − μ₀)
-```
+
 
 **Distribution under H₀:**
-```
+
 T² ~ [(n−1)p/(n−p)] · F_{p, n−p}
-```
+
 
 **Decision Rule:** Reject H₀ at level α if:
-```
+
 T² > [(n−1)p/(n−p)] · F_{p, n−p}(α)
-```
+
 
 **Intuition:** Measures squared Mahalanobis distance between sample mean and hypothesized mean, scaled by sample covariance. Large T² indicates significant deviation.
 
@@ -712,7 +712,7 @@ T² > [(n−1)p/(n−p)] · F_{p, n−p}(α)
 - Hypothesized: μ₀ = (70, 65, 75)ᵀ
 
 **Calculate:**
-```
+
 X̄ − μ₀ = [2, 3, −2]ᵀ
 
 S⁻¹ = (compute inverse or use software)
@@ -720,13 +720,13 @@ S⁻¹ = (compute inverse or use software)
 T² = 50 × [2,3,−2] S⁻¹ [2,3,−2]ᵀ
     = 50 × (computed quadratic form)
     ≈ 50 × 0.85 = 42.5
-```
+
 
 **Critical Value:**
-```
+
 p=3, n=50, α=0.05
 [(49×3)/47] × F_{3,47}(0.05) ≈ 3.13 × 2.80 ≈ 8.76
-```
+
 
 **Decision:** 42.5 > 8.76 → **Reject H₀**
 
@@ -823,4 +823,3 @@ Every multivariate concept revolves around **Σ**:
 | **Geometry** | Σ⁻¹ defines Mahalanobis metric |
 
 **Understanding Σ** — its spectral decomposition (PCA), its role in conditional distributions, and its estimation properties — is the foundation of multivariate statistical analysis.
-```

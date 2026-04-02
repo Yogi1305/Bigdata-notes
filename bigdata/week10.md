@@ -1,4 +1,4 @@
-```markdown
+
 # 📘 Module 10: Principal Component Analysis — Complete Reference Guide (NPTEL)
 
 ---
@@ -15,24 +15,24 @@ Before performing PCA, we center the data and compute the sample covariance stru
 **Given:** n observations on p variables, arranged as an n×p data matrix **X**.
 
 **Sample Mean Vector:**
-```
+
 X̄ = (1/n) Σᵢ₌₁ⁿ Xᵢ = (X̄₁, X̄₂, ..., X̄ₚ)ᵀ
-```
+
 
 **Centered Data Matrix:**
-```
+
 X̃ = X − 1X̄ᵀ   (subtract mean from each column)
-```
+
 
 **Sample Covariance Matrix:**
-```
+
 S = (1/(n−1)) X̃ᵀX̃ = (1/(n−1)) Σᵢ₌₁ⁿ (Xᵢ − X̄)(Xᵢ − X̄)ᵀ
-```
+
 
 **Sample Correlation Matrix:**
-```
+
 R = D⁻¹/² S D⁻¹/²
-```
+
 where D = diag(s₁₁, s₂₂, ..., sₚₚ) contains the sample variances.
 
 ### Detailed Example: Bivariate Dataset (n=5, p=2)
@@ -47,11 +47,11 @@ where D = diag(s₁₁, s₂₂, ..., sₚₚ) contains the sample variances.
 | 5 | 175 | 70 |
 
 **Sample Mean:**
-```
+
 X̄₁ = (160+170+165+180+175)/5 = 170
 X̄₂ = (55+65+60+75+70)/5 = 65
 X̄ = [170, 65]ᵀ
-```
+
 
 **Centered Data:**
 | Obs | X̃₁ | X̃₂ |
@@ -63,14 +63,14 @@ X̄ = [170, 65]ᵀ
 | 5 | +5 | +5 |
 
 **Sample Covariance:**
-```
+
 s₁₁ = (100+0+25+100+25)/4 = 62.5
 s₂₂ = (100+0+25+100+25)/4 = 62.5
 s₁₂ = (100+0+25+100+25)/4 = 62.5
 
 S = [ 62.5  62.5 ]
     [ 62.5  62.5 ]
-```
+
 
 **Interpretation:** Perfect sample correlation (ρ̂ = 1) because X₂ = X₁ − 105 exactly in this constructed example.
 
@@ -83,43 +83,43 @@ PCA seeks linear combinations of variables that capture maximum variance in succ
 
 **Principal Components (PCs):**
 The k-th PC is:
-```
+
 Yₖ = eₖᵀX̃ = eₖ₁X̃₁ + eₖ₂X̃₂ + ... + eₖₚX̃ₚ
-```
+
 where **eₖ** is the k-th eigenvector of S (or Σ for population PCA).
 
 **Optimization Problem for PC1:**
-```
+
 Maximize: Var(Y₁) = e₁ᵀSe₁
 Subject to: e₁ᵀe₁ = 1 (unit length)
-```
+
 
 **Solution:** By Rayleigh-Ritz theorem, the maximum is the largest eigenvalue λ₁ of S, achieved when e₁ is the corresponding eigenvector.
 
 **Optimization for PC2:**
-```
+
 Maximize: Var(Y₂) = e₂ᵀSe₂
 Subject to: e₂ᵀe₂ = 1 and e₂ᵀe₁ = 0 (orthogonal to PC1)
-```
+
 
 **Solution:** The second largest eigenvalue λ₂ and its eigenvector e₂.
 
 ### Detailed Example: Finding PC1 and PC2
 
 **From previous example:**
-```
+
 S = [ 62.5  62.5 ]
     [ 62.5  62.5 ]
-```
+
 
 **Eigen-decomposition:**
-```
+
 Characteristic equation: det(S − λI) = (62.5−λ)² − 62.5² = 0
 (62.5−λ)² = 62.5²
 62.5−λ = ±62.5
 
 λ₁ = 125, λ₂ = 0
-```
+
 
 **Eigenvectors:**
 - For λ₁ = 125: [62.5−125, 62.5; 62.5, 62.5−125] = [−62.5, 62.5; ...]
@@ -129,12 +129,12 @@ Characteristic equation: det(S − λI) = (62.5−λ)² − 62.5² = 0
   → e₂ = [1/√2, −1/√2]ᵀ ≈ [0.707, −0.707]ᵀ
 
 **Principal Components:**
-```
+
 Y₁ = 0.707(X̃₁) + 0.707(X̃₂) = 0.707(Height_c) + 0.707(Weight_c)
    = 0.707(X̃₁ + X̃₂)  [Sum of standardized variables]
 
 Y₂ = 0.707(X̃₁) − 0.707(X̃₂) = 0.707(X̃₁ − X̃₂)  [Difference]
-```
+
 
 **Variance Captured:**
 - PC1 captures λ₁ = 125 (100% of total variance 125+0)
@@ -159,17 +159,17 @@ Y₂ = 0.707(X̃₁) − 0.707(X̃₂) = 0.707(X̃₁ − X̃₂)  [Difference]
 ### Detailed Example: Bivariate Normal Simulation
 
 **True Population:** X ~ N₂(µ, Σ) with
-```
+
 µ = [0, 0]ᵀ
 Σ = [ 1    0.8 ]
     [ 0.8  1   ]  (ρ = 0.8)
-```
+
 
 **True Eigen-decomposition:**
-```
+
 λ₁ = 1.8,  e₁ = [1/√2, 1/√2]ᵀ  (major axis)
 λ₂ = 0.2,  e₂ = [1/√2, −1/√2]ᵀ (minor axis)
-```
+
 
 **Simulation Study:**
 
@@ -201,19 +201,19 @@ For the sample principal components Ŷₖ = êₖᵀ(X − X̄):
 Since S is symmetric, eigenvectors êₖ are orthonormal: êⱼᵀêₖ = δⱼₖ (1 if j=k, 0 otherwise).
 
 **Variance:**
-```
+
 Var(Ŷₖ) = êₖᵀ S êₖ = êₖᵀ (λ̂ₖ êₖ) = λ̂ₖ (êₖᵀêₖ) = λ̂ₖ
-```
+
 
 **Covariance:**
-```
+
 Cov(Ŷⱼ, Ŷₖ) = êⱼᵀ S êₖ = êⱼᵀ (λ̂ₖ êₖ) = λ̂ₖ (êⱼᵀêₖ) = 0  (for j≠k)
-```
+
 
 ### Detailed Example: Verifying Uncorrelatedness
 
 **From Lecture 1 example (n=5):**
-```
+
 Centered data matrix X̃:
 [ −10  −10 ]
 [   0    0 ]
@@ -234,7 +234,7 @@ Var(Ŷ₂) = 0 = λ₂ ✓
 
 Sample covariance:
 Cov(Ŷ₁, Ŷ₂) = 0 (since Ŷ₂ is constant zero)
-```
+
 
 ---
 
@@ -242,9 +242,9 @@ Cov(Ŷ₁, Ŷ₂) = 0 (since Ŷ₂ is constant zero)
 
 ### Statement
 The proportion of **total sample variance** explained by the k-th sample PC is:
-```
+
 λ̂ₖ / (λ̂₁ + λ̂₂ + ... + λ̂ₚ) = λ̂ₖ / tr(S)
-```
+
 
 where tr(S) = Σ sⱼⱼ is the sum of sample variances (total variance).
 
@@ -252,9 +252,9 @@ where tr(S) = Σ sⱼⱼ is the sum of sample variances (total variance).
 Since PCs are uncorrelated, their variances add up to the total variance in the standardized space. The trace of S equals the sum of eigenvalues.
 
 **Cumulative Proportion:**
-```
+
 (λ̂₁ + ... + λ̂ₖ) / tr(S)
-```
+
 tells us how much variance is captured by the first k PCs.
 
 ### Detailed Example: Variance Decomposition
@@ -281,9 +281,9 @@ tells us how much variance is captured by the first k PCs.
 
 ### Statement
 The sample correlation between the k-th PC Ŷₖ and the i-th original variable Xᵢ is:
-```
+
 r_{Ŷₖ, Xᵢ} = êₖᵢ √λ̂ₖ / √sᵢᵢ
-```
+
 
 where:
 - êₖᵢ = i-th component of k-th eigenvector (loading)
@@ -386,21 +386,21 @@ PCA on covariance matrix S is dominated by variables with large variances. PCA o
 3. **PLATE:** Relatively independent (r ≈ 0.2 with others)
 
 **PC1 (41.8% variance):**
-```
+
 Loadings: NEUT(0.42), LYMPH(−0.38), PLATE(0.35), HCT(0.32), ...
-```
+
 **Interpretation:** "Acute phase reaction" — high neutrophils + low lymphocytes indicate bacterial infection/inflammation; platelets also rise in inflammation.
 
 **PC2 (19.3% variance):**
-```
+
 Loadings: RBC(0.48), HGB(0.50), HCT(0.45), NEUT(−0.20)...
-```
+
 **Interpretation:** "Red blood cell volume" — opposite to white cell activity.
 
 **PC3 (11.9% variance):**
-```
+
 Loadings: MONO(0.60), EOS(0.55), LYMPH(0.25)...
-```
+
 **Interpretation:** "Monocyte-Eosinophil axis" — chronic inflammation/allergy.
 
 **Scree Plot Decision:** Elbow at PC3 or PC4 → retain 3-4 components for 73-83% variance.
@@ -460,9 +460,9 @@ This makes physiological sense and validates the PCA structure.
 If we assume the data comes from Nₚ(µ, Σ), the sample PCs are the Maximum Likelihood Estimates (MLE) of the population PCs.
 
 **Likelihood Function:**
-```
+
 L(µ, Σ) ∝ |Σ|^(−n/2) exp{−½ Σᵢ (Xᵢ−µ)ᵀΣ⁻¹(Xᵢ−µ)}
-```
+
 
 **MLE Results:**
 - µ̂ = X̄ (sample mean)
@@ -481,21 +481,21 @@ Since Σ̂ is proportional to S, it has the same eigenvectors as S, and eigenval
 How many PCs are "significant"? We test whether the smallest (p−k) eigenvalues are equal (indicating isotropic noise).
 
 **Hypothesis:**
-```
+
 H₀: λₖ₊₁ = λₖ₊₂ = ... = λₚ (remaining eigenvalues equal)
 H₁: At least two of the trailing eigenvalues differ
-```
+
 
 **Test Statistic (Bartlett's Test):**
-```
+
 Λ = (arithmetic mean of last m eigenvalues) / (geometric mean of last m eigenvalues)
   = (λ̂ₖ₊₁ + ... + λ̂ₚ)/m / (λ̂ₖ₊₁ × ... × λ̂ₚ)^(1/m)
-```
+
 
 **Or using log form:**
-```
+
 T = −(n−1 − (2p+4m+11)/6) × ln(Λ) ~ χ² with (m−1)(m+2)/2 df
-```
+
 where m = p − k (number of eigenvalues being tested for equality).
 
 ### Detailed Example: Blood Chemistry (p=8)
@@ -510,7 +510,7 @@ where m = p − k (number of eigenvalues being tested for equality).
 | 8 | 0.22 |
 
 **Calculate:**
-```
+
 Arithmetic mean = (0.55+0.35+0.27+0.22)/4 = 0.3475
 Geometric mean = (0.55×0.35×0.27×0.22)^(1/4) = 0.312
 
@@ -526,21 +526,21 @@ T = 171.83 × 0.108 = 18.56
 Degrees of freedom = (4−1)(4+2)/2 = 3×6/2 = 9
 
 Critical value χ²₉(0.05) = 16.92
-```
+
 
 **Decision:** T = 18.56 > 16.92 → **Reject H₀**
 
 **Conclusion:** The last 4 eigenvalues are not all equal; we might need to retain more than 4 components, or at least PC5 is significant.
 
 **Testing last 3 (m=3):** λ₆, λ₇, λ₈
-```
+
 Arithmetic mean = 0.280
 Geometric mean = 0.275
 Λ = 1.018, ln(Λ) = 0.018
 df = (2)(5)/2 = 5
 Critical χ²₅ = 11.07
 T ≈ small → Fail to reject
-```
+
 
 **Conclusion:** PCs 6,7,8 may be considered "noise" level (isotropic). Retain first 5 components.
 
@@ -565,7 +565,7 @@ T ≈ small → Fail to reject
 
 ## 🔗 The Complete PCA Workflow
 
-```
+
 1. DATA PREPARATION
    ├── Check scales of variables
    ├── Decide: Covariance (similar scales) or Correlation (different scales)
@@ -586,5 +586,4 @@ T ≈ small → Fail to reject
    ├── Bartlett's test (significant components)
    ├── Cross-validation (stability)
    └── Check for outliers via Mahalanobis distance
-```
-```
+

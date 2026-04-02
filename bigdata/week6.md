@@ -1,4 +1,4 @@
-```markdown
+
 # 📘 Complete Guide: Linear Modelling & Regression Analysis (Week 6)
 
 ---
@@ -48,9 +48,9 @@ Regression analysis is a statistical methodology used to establish a relationshi
 The simple linear regression model assumes a linear relationship between X and Y with random error:
 
 **Mathematical Form:**
-```
+
 Y = a + bX + ε
-```
+
 
 **Component Breakdown:**
 - **Y:** Dependent/Response variable (what we measure)
@@ -71,9 +71,9 @@ Y = a + bX + ε
 **Scenario:** Real estate pricing model.
 
 **Model Specification:**
-```
+
 Price (₹ lakhs) = a + b × Area (sq ft) + ε
-```
+
 
 **Interpretation of Parameters:**
 - **a = 50:** Base price (₹50 lakhs) for a house with 0 sq ft (theoretical intercept, represents land value + fixed costs)
@@ -97,22 +97,22 @@ Price (₹ lakhs) = a + b × Area (sq ft) + ε
 **Ordinary Least Squares (OLS)** finds the line that minimizes the sum of squared vertical distances (residuals) between observed Y values and predicted Ŷ values.
 
 **Objective Function:**
-```
+
 Minimize S(a,b) = Σᵢ₌₁ⁿ (Yᵢ - Ŷᵢ)² = Σᵢ₌₁ⁿ (Yᵢ - a - bXᵢ)²
-```
+
 
 **Derivation (Calculus Approach):**
 Taking partial derivatives and setting to zero:
-```
+
 ∂S/∂a = -2Σ(Yᵢ - a - bXᵢ) = 0
 ∂S/∂b = -2ΣXᵢ(Yᵢ - a - bXᵢ) = 0
-```
+
 
 **Closed-Form Solutions:**
-```
+
 b̂ = sXY / sXX = Σ(Xᵢ - X̄)(Yᵢ - Ȳ) / Σ(Xᵢ - X̄)²
 â = Ȳ - b̂X̄
-```
+
 
 Where:
 - **sXY:** Sample covariance between X and Y (sum of cross-products)
@@ -132,7 +132,7 @@ Where:
 | **Sum** | 15 | 20 | 0 | 0 | **9** | **10** |
 
 **Calculations:**
-```
+
 X̄ = 15/5 = 3
 Ȳ = 20/5 = 4
 
@@ -141,12 +141,12 @@ sXX = Σ(Xᵢ-X̄)² = 10
 
 b̂ = 9/10 = 0.9
 â = 4 - (0.9)(3) = 4 - 2.7 = 1.3
-```
+
 
 **Fitted Regression Line:**
-```
+
 Ŷ = 1.3 + 0.9X
-```
+
 
 **Predictions & Residuals:**
 | X | Y (Observed) | Ŷ (Predicted) | Residual (e=Y-Ŷ) | Residual² |
@@ -179,10 +179,10 @@ b̂ = 9/10 = 0.9
 
 ### 4.2 Variances of Estimators
 **Formulas:**
-```
+
 Var(b̂) = σ² / sXX
 Var(â) = σ²(1/n + X̄²/sXX)
-```
+
 
 **Interpretation:**
 - **Precision increases with X-spread:** Larger sXX (X values more spread out) → Smaller Var(b̂) → More precise slope estimate
@@ -203,9 +203,9 @@ Var(â) = σ²(1/n + X̄²/sXX)
 
 ### 4.3 Covariance between â and b̂
 **Formula:**
-```
+
 Cov(â, b̂) = -X̄σ² / sXX
-```
+
 
 **Interpretation:** The estimators are negatively correlated when X̄ > 0. If you overestimate the slope, you tend to underestimate the intercept to keep the line passing through (X̄, Ȳ).
 
@@ -224,9 +224,9 @@ The OLS residuals eᵢ = Yᵢ - Ŷᵢ always satisfy:
    - Since Ŷ(X̄) = â + b̂X̄ = (Ȳ - b̂X̄) + b̂X̄ = Ȳ
 
 **Proof of Σeᵢ = 0:**
-```
+
 Σeᵢ = Σ(Yᵢ - â - b̂Xᵢ) = ΣYᵢ - nâ - b̂ΣXᵢ = nȲ - n(Ȳ - b̂X̄) - b̂nX̄ = nȲ - nȲ + nb̂X̄ - nb̂X̄ = 0
-```
+
 
 ---
 
@@ -236,23 +236,23 @@ The OLS residuals eᵢ = Yᵢ - Ŷᵢ always satisfy:
 **SSres (Sum of Squared Residuals)** measures the total unexplained variation after fitting the regression line.
 
 **Computational Formula:**
-```
+
 SSres = Σ(Yᵢ - Ŷᵢ)² = sYY - b̂·sXY = sYY - (sXY)²/sXX
-```
+
 
 Where sYY = Σ(Yᵢ - Ȳ)² (total sum of squares for Y).
 
 **Estimate of Error Variance (σ²):**
-```
+
 s² = SSres / (n - 2)
-```
+
 
 **Why (n-2)?** We lose 2 degrees of freedom because we estimated 2 parameters (â and b̂) from the data.
 
 **Standard Error of Regression (s):**
-```
+
 s = √s² = √[SSres/(n-2)]
-```
+
 This estimates the standard deviation of the error term ε, representing typical prediction error magnitude.
 
 ### Detailed Example: Calculating s²
@@ -262,18 +262,18 @@ This estimates the standard deviation of the error term ε, representing typical
 - n = 5
 - n - 2 = 3
 
-```
+
 s² = 1.90 / 3 = 0.6333
 s = √0.6333 = 0.796
-```
+
 
 **Interpretation:** Typical prediction error is about 0.8 units. When we predict Y using this regression, we expect to be off by roughly ±0.8 on average.
 
 **Standard Errors of Coefficients:**
-```
+
 SE(b̂) = √(s²/sXX) = √(0.6333/10) = √0.0633 = 0.252
 SE(â) = √[s²(1/n + X̄²/sXX)] = √[0.6333(0.2 + 9/10)] = √[0.6333(1.1)] = √0.6966 = 0.835
-```
+
 
 ---
 
@@ -298,13 +298,13 @@ We can decompose: C = (X⊤X)⁻¹X⊤ + D = A + D
 For unbiasedness, we need DX = 0 (zero matrix).
 
 Then:
-```
+
 Var(β̃) = Var(CY) = CVar(Y)C⊤ = σ²CC⊤
        = σ²(A+D)(A+D)⊤
        = σ²(AA⊤ + AD⊤ + DA⊤ + DD⊤)
        = σ²AA⊤ + σ²DD⊤  (since AX = I and DX = 0 implies AD⊤ = 0)
        = Var(β̂) + σ²DD⊤
-```
+
 
 Since DD⊤ is positive semi-definite, Var(β̃) ≥ Var(β̂).
 
@@ -321,19 +321,19 @@ Since DD⊤ is positive semi-definite, Var(β̃) ≥ Var(β̂).
 
 ### Explanation
 **Centering** means subtracting the mean from X before regression:
-```
+
 X̃ᵢ = Xᵢ - X̄
-```
+
 
 **Centered Model Specification:**
-```
+
 Yᵢ = a* + bX̃ᵢ + εᵢ = a* + b(Xᵢ - X̄) + εᵢ
-```
+
 
 **Relationship to Original Parameters:**
-```
+
 a* = a + bX̄
-```
+
 
 When X = X̄ (centered zero), Y = a*, so **a* represents the expected Y at the mean of X** (often more interpretable than a, which is Y at X=0).
 
@@ -341,9 +341,9 @@ When X = X̄ (centered zero), Y = a*, so **a* represents the expected Y at the m
 In the centered model, **Cov(â*, b̂) = 0** — the intercept and slope estimates are uncorrelated (statistically independent under normality).
 
 **Proof of Zero Covariance:**
-```
+
 Cov(â*, b̂) = Cov(Ȳ, b̂) = 0  (since b̂ depends on X deviations and Ȳ is independent of X deviations in OLS)
-```
+
 
 ### Detailed Example: Years of Experience
 
@@ -357,9 +357,9 @@ Cov(â*, b̂) = Cov(Ȳ, b̂) = 0  (since b̂ depends on X deviations and Ȳ is i
 
 **Calculation Verification:**
 If original â = 1.3, b̂ = 0.9, X̄ = 3:
-```
+
 â* = 1.3 + 0.9(3) = 1.3 + 2.7 = 4.0 = Ȳ ✓
-```
+
 
 ---
 
@@ -369,9 +369,9 @@ If original â = 1.3, b̂ = 0.9, X̄ = 3:
 When we have k predictors (X₁, X₂, ..., Xₖ), we extend to Multiple Linear Regression using matrix notation for compactness and computation.
 
 **Model:**
-```
+
 Y = Xβ + ε
-```
+
 
 **Matrix Dimensions:**
 - **Y:** n×1 vector of responses
@@ -380,20 +380,20 @@ Y = Xβ + ε
 - **ε:** n×1 vector of errors ~ N(0, σ²Iₙ)
 
 **OLS Solution (Normal Equations):**
-```
+
 β̂ = (X⊤X)⁻¹X⊤Y
-```
+
 
 **Fitted Values:**
-```
+
 Ŷ = Xβ̂ = HY
-```
+
 where H = X(X⊤X)⁻¹X⊤ is the "Hat Matrix" (projects Y onto column space of X).
 
 ### Detailed Worked Example: Matrix Calculation
 
 **Data (n=3, simple case for illustration):**
-```
+
 X = [1, 1]
     [1, 2]
     [1, 3]
@@ -401,35 +401,35 @@ X = [1, 1]
 Y = [2]
     [3]
     [5]
-```
+
 
 **Step 1: Compute X⊤X**
-```
+
 X⊤X = [1 1 1] [1 1]   [3   6 ]
       [1 2 3] [1 2] = [6  14 ]
               [1 3]
-```
+
 
 **Step 2: Compute (X⊤X)⁻¹**
-```
+
 Determinant = (3)(14) - (6)(6) = 42 - 36 = 6
 
 (X⊤X)⁻¹ = (1/6) [14  -6]
                  [-6   3]
-```
+
 
 **Step 3: Compute X⊤Y**
-```
+
 X⊤Y = [1 1 1][2]   [10]
       [1 2 3][3] = [23]
              [5]
-```
+
 
 **Step 4: Compute β̂ = (X⊤X)⁻¹X⊤Y**
-```
+
 β̂ = (1/6) [14  -6][10] = (1/6)[140-138] = (1/6)[2]  = [0.333]
           [-6   3][23]        [-60+69]        [9]    [1.500]
-```
+
 
 **Result:** β̂ = [0.333, 1.5]⊤
 - Intercept â = 0.333
@@ -450,33 +450,33 @@ X⊤Y = [1 1 1][2]   [10]
 Under the assumption that errors are normally distributed (εᵢ ~ N(0, σ²)), we can derive the Maximum Likelihood Estimators (MLE). MLE finds the parameter values that make the observed data most probable.
 
 **Likelihood Function:**
-```
+
 L(a, b, σ²) = ∏ᵢ₌₁ⁿ (1/√(2πσ²)) exp[-(Yᵢ-a-bXᵢ)²/(2σ²)]
-```
+
 
 **Log-Likelihood:**
-```
+
 ln L = -(n/2)ln(2π) - (n/2)ln(σ²) - (1/(2σ²))Σ(Yᵢ-a-bXᵢ)²
-```
+
 
 **Maximization:**
 - With respect to **a** and **b:** Minimize Σ(Yᵢ-a-bXᵢ)² — exactly the OLS criterion!
 - With respect to **σ²:** Take derivative and set to zero
 
 **MLE Results:**
-```
+
 â_MLE = OLS intercept
 b̂_MLE = OLS slope
 σ̂²_MLE = (1/n)Σ(Yᵢ-Ŷᵢ)² = SSres/n
-```
+
 
 **Key Insight:** Under normality, OLS = MLE for the regression coefficients. However, the MLE for σ² is biased (divides by n instead of n-2).
 
 **Unbiased Correction:**
-```
+
 s² = SSres/(n-2)  [Unbiased, preferred for inference]
 σ̂²_MLE = SSres/n  [Biased, smaller by factor (n-2)/n]
-```
+
 
 ---
 
@@ -484,26 +484,26 @@ s² = SSres/(n-2)  [Unbiased, preferred for inference]
 
 ### Explanation
 We often want to test whether X has a significant linear effect on Y:
-```
+
 H₀: b = 0 (X has no effect)
 H₁: b ≠ 0 (X has a linear effect)
-```
+
 
 **Test Statistic depends on whether σ² is known:**
 
 ### Case 1: σ² Known (Rare in Practice)
 **Test Statistic:**
-```
+
 Z₁ = b̂ / √(σ²/sXX) ~ N(0,1) under H₀
-```
+
 
 **Decision Rule:** Reject H₀ if |Z₁| > Zα/₂ (e.g., 1.96 for α=0.05)
 
 ### Case 2: σ² Unknown (Standard Practice)
 **Test Statistic:**
-```
+
 t₀ = b̂ / SE(b̂) = b̂ / √(s²/sXX) ~ t(n-2) under H₀
-```
+
 
 **Decision Rule:** Reject H₀ if |t₀| > t(n-2, α/₂)
 
@@ -518,11 +518,11 @@ t₀ = b̂ / SE(b̂) = b̂ / √(s²/sXX) ~ t(n-2) under H₀
 - n = 5, so df = 3
 
 **Calculate:**
-```
+
 SE(b̂) = √(0.6333/10) = √0.06333 = 0.2517
 
 t₀ = 0.9 / 0.2517 = 3.576
-```
+
 
 **Critical Value:** t(3, 0.025) = 3.182 (from t-table)
 
@@ -538,17 +538,17 @@ t₀ = 0.9 / 0.2517 = 3.576
 
 ### Explanation
 Testing whether the intercept equals a specific value a₀:
-```
+
 H₀: a = a₀
 H₁: a ≠ a₀
-```
+
 
 **Test Statistic (σ² unknown):**
-```
+
 t₀ = (â - a₀) / SE(â) ~ t(n-2)
 
 where SE(â) = √[s²(1/n + X̄²/sXX)]
-```
+
 
 ### Detailed Example: Testing if Intercept is Zero
 
@@ -560,18 +560,18 @@ where SE(â) = √[s²(1/n + X̄²/sXX)]
 - n = 5, X̄ = 3, sXX = 10
 
 **Calculate SE(â):**
-```
+
 SE(â) = √[0.6333(1/5 + 9/10)] 
       = √[0.6333(0.2 + 0.9)]
       = √[0.6333 × 1.1]
       = √0.6966
       = 0.8346
-```
+
 
 **Test Statistic:**
-```
+
 t₀ = (1.3 - 0) / 0.8346 = 1.558
-```
+
 
 **Critical Value:** t(3, 0.025) = 3.182
 
@@ -587,9 +587,9 @@ t₀ = (1.3 - 0) / 0.8346 = 1.558
 For inference in the general linear model Y = Xβ + ε with rank(X) = r (where r = k+1 including intercept):
 
 **Distribution of Residual Sum of Squares:**
-```
+
 RSS/σ² = SSres/σ² ~ χ²(n - r)
-```
+
 
 **Key Properties:**
 - **RSS (Residual Sum of Squares):** Σ(Yᵢ - Ŷᵢ)² = SSres
@@ -600,9 +600,9 @@ RSS/σ² = SSres/σ² ~ χ²(n - r)
 The F-statistic for testing multiple coefficients simultaneously is based on comparing two RSS values (restricted vs unrestricted model) divided by their respective χ² degrees of freedom.
 
 **F-Test General Form:**
-```
+
 F = [(RSS_R - RSS_U)/q] / [RSS_U/(n-r)] ~ F(q, n-r)
-```
+
 where:
 - RSS_R = Residual SS from restricted model (under H₀)
 - RSS_U = Residual SS from unrestricted model
@@ -637,7 +637,7 @@ where:
 
 ## 🔗 The Complete Regression Workflow
 
-```
+
 1. MODEL SPECIFICATION
    ├── Define dependent variable Y
    ├── Identify independent variable(s) X
@@ -669,4 +669,3 @@ where:
    ├── Explain slope: "For each 1-unit increase in X, Y increases by b̂ units"
    ├── Explain intercept: "Baseline Y when X=0 is â"
    └── Report reliability: "Standard error of estimate is s"
-```
