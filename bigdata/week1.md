@@ -271,7 +271,7 @@ So a positive test does **not** mean 99% chance of disease.
 
 ### Discrete Expected Value
 $$
-E[X] = \sum_x xP(X=x)
+E[X](mean) = \sum_x xP(X=x)
 $$
 
 ### Continuous Expected Value
